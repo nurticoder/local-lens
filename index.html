@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A privacy-first local screen assistant prototype." />
+    <title>Local Lens</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">L</div>
+          <div>
+            <p class="eyebrow">LOCAL ASSISTANT</p>
+            <h1>Local Lens</h1>
+          </div>
+        </div>
+        <div class="status-cluster" aria-label="Privacy status">
+          <span class="status-dot"></span>
+          <span>Offline &amp; private</span>
+          <button class="icon-button" id="settingsButton" type="button" aria-label="Open settings">⚙</button>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow accent">SCREEN-AWARE · ON DEVICE</p>
+          <h2>Understand what’s on your screen.</h2>
+          <p class="hero-copy">
+            Capture a selected area, extract text locally, and ask questions without sending your
+            screen to a cloud service.
+          </p>
+        </div>
+        <div class="privacy-card">
+          <div class="privacy-card-heading">
+            <span class="shield" aria-hidden="true">✓</span>
+            <strong>Privacy controls</strong>
+          </div>
+          <p id="privacyDescription">The assistant panel stays visible and capture is paused.</p>
+          <label class="switch-row">
+            <span>Private display mode</span>
+            <input id="privacyToggle" type="checkbox" role="switch" />
+            <span class="switch" aria-hidden="true"></span>
+          </label>
+          <small>Changes how the local panel is presented. It never hides activity from monitoring or bypasses controls.</small>
+        </div>
+      </section>
+
+      <section class="workspace-grid">
+        <article class="panel screen-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">CAPTURE AREA</p>
+              <h3>Screen context</h3>
+            </div>
+            <span class="pill" id="captureState">Paused</span>
+          </div>
+          <div class="screen-preview">
+            <div class="window-bar">
+              <span class="traffic red"></span><span class="traffic yellow"></span><span class="traffic green"></span>
+              <span class="window-title">Project notes · local-lens.md</span>
+            </div>
+            <div class="fake-document">
+              <div class="fake-line wide"></div>
+              <div class="fake-line medium"></div>
+              <div class="fake-line short"></div>
+              <div class="fake-highlight">Build a local-first assistant with explicit capture controls.</div>
+              <div class="fake-line medium"></div>
+              <div class="fake-line wide"></div>
+              <div class="fake-line short"></div>
+            </div>
+            <span class="selection-tag">Selected region</span>
+          </div>
+          <div class="button-row">
+            <button class="primary-button" id="captureButton" type="button">Start capture</button>
+            <button class="secondary-button" id="selectButton" type="button">Select region</button>
+          </div>
+          <p class="panel-note" id="captureNote">No screenshots are saved. OCR will run only while capture is enabled.</p>
+        </article>
+
+        <article class="panel answer-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">LOCAL CONTEXT</p>
+              <h3>Extracted text</h3>
+            </div>
+            <span class="pill neutral">OCR ready</span>
+          </div>
+          <div class="ocr-output" id="ocrOutput">
+            <p class="muted">Start capture to analyze the selected screen region.</p>
+          </div>
+          <div class="divider"></div>
+          <label class="question-label" for="questionInput">Ask about this screen</label>
+          <div class="ask-row">
+            <input id="questionInput" type="text" placeholder="What is the main idea?" />
+            <button class="ask-button" id="askButton" type="button">Ask</button>
+          </div>
+          <div class="answer-box" id="answerBox" aria-live="polite">
+            <span class="answer-icon" aria-hidden="true">✦</span>
+            <p>Answers use DeepSeek only when you ask and a key is configured.</p>
+          </div>
+        </article>
+      </section>
+
+      <footer class="footer">
+        <span>Local Lens prototype</span>
+        <span>Nothing leaves this device · <button class="text-button" id="dataButton" type="button">Data controls</button></span>
+      </footer>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
