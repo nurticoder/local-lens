@@ -1,7 +1,7 @@
 {
   "name": "local-lens",
   "version": "0.1.0",
-  "description": "A privacy-first desktop screen assistant with optional DeepSeek answers.",
+  "description": "A privacy-first desktop screen assistant.",
   "main": "electron/main.js",
   "scripts": {
     "start": "electron .",
