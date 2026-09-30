@@ -1,12 +1,12 @@
 {
   "name": "local-lens",
   "version": "0.1.0",
-  "description": "A privacy-first desktop screen assistant.",
-  "main": "electron/main.js",
+  "description": "A privacy-first desktop screen assistant with optional DeepSeek answers.",
+  "main": "main.js",
   "scripts": {
     "start": "electron .",
     "dev": "electron .",
-    "check": "node --check electron/main.js && node --check electron/preload.js && node --check app.js"
+    "check": "node --check main.js && node --check preload.js && node --check app.js"
   },
   "devDependencies": {
     "electron": "^38.2.0"
